@@ -1,0 +1,13 @@
+az policy definition create --name EnforceCostCenterTag --description "Enforce Cost Center Tag" --rules '{
+"if": {
+    "allOf": [
+        {
+            "field": "tags['CostCenter']",
+            "exists": false
+        }
+    ]
+},
+"then": {
+    "effect": "deny"
+}
+}'
